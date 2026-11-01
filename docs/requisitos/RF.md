@@ -1,0 +1,9 @@
+- **RF-001 (Cadastro de eventos):** O sistema deve permitir que usuários cadastrados criem e publiquem eventos, informando seus dados e características.
+- **RF-002 (Participação em eventos):** O sistema deve permitir que usuários cadastrados comprem ingressos para eventos disponíveis.
+- **RF-003 (Validação por QR Code):**	O sistema deve gerar um QR Code único para cada ingresso comprado, permitindo que a equipe responsável valide sua autenticidade na entrada do evento.
+- **RF-004 (Controle de vendas):** O sistema deve permitir que o organizador visualize a quantidade de ingressos vendidos para seu evento.
+- **RF-005 (Disponibilidade de ingressos):** O sistema deve apresentar aos usuários a quantidade de ingressos disponíveis para cada evento.
+- **RF-006 (Busca e filtros):** O sistema deve permitir a busca de eventos por nome, categoria e faixa de preço.
+- **RF-007 (Notificações):** O sistema deve enviar notificações aos participantes antes do início do evento, informando data, horário e local.
+- **RF-008 (Gerenciamento de eventos):** O sistema deve permitir que o organizador cadastre e edite informações do evento, como nome, descrição, data, horário, local, categoria e valor dos ingressos.
+- **RF-009 (Pagamento de ingressos):** O sistema deve permitir que os usuários realizem o pagamento dos ingressos por meio da integração com um serviço externo de pagamento.

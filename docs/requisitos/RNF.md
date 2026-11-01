@@ -1,0 +1,4 @@
+- **RNF-001 (Escalabilidade):**	O sistema deve suportar o aumento simultâneo de acessos durante a abertura das vendas, utilizando infraestrutura escalável e balanceamento de carga para distribuir as requisições entre os servidores.
+- **RNF-002 (Segurança):** O sistema não deve armazenar dados sensíveis de cartões de crédito ou débito em seu banco de dados, delegando o processamento dessas informações ao serviço externo de pagamento.
+- **RNF-003 (Disponibilidade):** O sistema deve manter disponibilidade mínima de 99,9% durante o ano, desconsiderando períodos de manutenção programada previamente comunicados.
+- **RNF-004 (Concorrência):**	O sistema deve garantir a consistência das vendas, impedindo que dois ou mais usuários comprem simultaneamente ingressos que ultrapassem a quantidade disponível para determinado evento.
