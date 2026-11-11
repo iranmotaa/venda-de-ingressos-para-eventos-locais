@@ -1,9 +1,18 @@
-**Modelo de Processo: Cascata**
+# Modelo de Processo: Cascata
 
-O modelo Cascata foi escolhido porque o projeto possui um conjunto de requisitos previamente definidos, permitindo organizar o desenvolvimento em etapas sequenciais, desde o levantamento dos requisitos até a implantação do sistema.
+## Por que Cascata?
+- Os requisitos já estão definidos desde o início.
+- As funcionalidades (eventos, venda, pagamento, QR Code) dependem umas das outras e precisam ser planejadas juntas.
+- A arquitetura para o pico de acessos precisa ser decidida antes de construir.
 
-Como a plataforma envolve funcionalidades que precisam trabalhar de forma integrada, como cadastro de eventos, venda de ingressos, processamento de pagamentos e validação por QR Code, optou-se por planejar e desenvolver o sistema antes de disponibilizá-lo aos usuários.
+## Fases seguidas
 
-Além disso, o modelo permite estabelecer previamente a arquitetura e a infraestrutura necessárias para lidar com os picos de acesso durante a abertura das vendas.
+| Fase | O que foi feito | Resultado |
+|------|-----------------|-----------|
+| 1. Requisitos | Definição dos RF e RNF | `docs/requisitos/` |
+| 2. Análise | Casos de uso e matriz de rastreabilidade | `docs/casos-de-uso/`, diagrama de casos de uso |
+| 3. Projeto | Classes, sequência, implantação e ADRs | `diagramas/`, `docs/adr/` |
+| 4. Implementação | Banco de dados e ambiente Docker | `banco/init.sql`, `docker-compose.yml` |
+| 5. Verificação | Conferência da coerência e teste do ambiente | `docker compose up` testado |
 
-Dessa forma, o Cascata apresenta uma abordagem organizada e adequada ao escopo definido para o projeto.
+Cada fase usa o resultado da anterior: requisitos → casos de uso → classes → sequência → implantação → banco.

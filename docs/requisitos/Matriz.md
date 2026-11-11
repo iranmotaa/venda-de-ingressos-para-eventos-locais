@@ -3,10 +3,10 @@
 | Requisito | Descrição resumida | Casos de uso | Classes |
 |-----------|--------------------------|--------------|---------|
 | RF-001 | Cadastro de eventos | UC-01 | Usuario, Organizador, Evento, Categoria |
-| RF-002 | Participação em eventos | UC-05 | Usuario, Evento, Ingresso, Pedido |
-| RF-003 | Validação por QR Code | UC-07 | Ingresso |
+| RF-002 | Participação em eventos | UC-05, UC-06 | Usuario, Evento, Ingresso, Pedido, Pagamento |
+| RF-003 | Validação por QR Code | UC-05, UC-07 | Ingresso |
 | RF-004 | Controle de vendas | UC-08 | Organizador, Evento, Pedido, Ingresso |
-| RF-005 | Disponibilidade de ingressos | UC-04 | Evento, Ingresso |
+| RF-005 | Disponibilidade de ingressos | UC-04, UC-05 | Evento, Ingresso |
 | RF-006 | Busca e filtros | UC-03 | Evento, Categoria |
 | RF-007 | Notificações | UC-09 | Notificacao, Usuario, Evento |
 | RF-008 | Gerenciamento de eventos | UC-01, UC-02 | Organizador, Evento, Categoria |
