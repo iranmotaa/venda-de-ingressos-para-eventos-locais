@@ -1,0 +1,62 @@
+erDiagram
+    usuario ||--o| organizador : "é um"
+    usuario ||--o{ notificacao : recebe
+    usuario ||--o{ pedido : realiza
+    organizador ||--o{ evento : organiza
+    notificacao }o--|| evento : "sobre"
+    categoria ||--o{ evento : classifica
+    evento ||--o{ ingresso : "refere-se a"
+    pedido ||--|{ ingresso : contém
+    pedido ||--o| pagamento : "pago por"
+
+    usuario {
+        int id PK
+        varchar nome
+        varchar email UK
+    }
+    organizador {
+        int id PK, FK
+    }
+    categoria {
+        int id PK
+        varchar nome UK
+    }
+    evento {
+        int id PK
+        varchar nome
+        text descricao
+        timestamp data_hora
+        varchar local
+        numeric valor_ingresso
+        int quantidade_disponivel
+        int organizador_id FK
+        int categoria_id FK
+    }
+    pedido {
+        int id PK
+        timestamp data
+        numeric valor_total
+        varchar status
+        int usuario_id FK
+    }
+    ingresso {
+        int id PK
+        varchar codigo_qr UK
+        boolean utilizado
+        int pedido_id FK
+        int evento_id FK
+    }
+    pagamento {
+        int id PK
+        varchar id_transacao
+        numeric valor
+        varchar status
+        int pedido_id FK, UK
+    }
+    notificacao {
+        int id PK
+        varchar mensagem
+        timestamp data_envio
+        int usuario_id FK
+        int evento_id FK
+    }
