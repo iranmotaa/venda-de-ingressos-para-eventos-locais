@@ -1,0 +1,18 @@
+sequenceDiagram
+    actor Comprador
+    participant Sistema
+    participant Evento
+    participant Pedido
+    participant Ingresso
+
+    Comprador->>Sistema: escolherEvento(evento, quantidade)
+    Sistema->>Evento: reservarIngressos(quantidade)
+    Evento-->>Sistema: reserva confirmada
+    Sistema->>Pedido: calcularTotal()
+    Pedido-->>Sistema: valorTotal (status PENDENTE)
+    Sistema-->>Comprador: resumo do pedido
+    Comprador->>Sistema: confirmarPedido()
+    Note over Sistema,Pedido: Pagamento executado pelo UC-06 (include)
+    Sistema->>Ingresso: gerar ingressos com codigoQR
+    Ingresso-->>Sistema: ingressos
+    Sistema-->>Comprador: ingressos com QR Code
