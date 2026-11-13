@@ -1,0 +1,27 @@
+flowchart LR
+    subgraph N1["«device» Dispositivo do usuário"]
+        A1["«artefato»<br/>Navegador web<br/>(interface HTML/JS)"]
+    end
+
+    subgraph N2["«node» Balanceador de carga"]
+        A2["«artefato»<br/>nginx<br/>(nginx.conf)"]
+    end
+
+    subgraph N3["«node» Servidores de aplicação (2 réplicas)"]
+        A3["«artefato»<br/>Aplicação web (API)<br/>réplica 1"]
+        A4["«artefato»<br/>Aplicação web (API)<br/>réplica 2"]
+    end
+
+    subgraph N4["«node» Servidor de banco de dados"]
+        A5["«artefato»<br/>PostgreSQL<br/>(init.sql)"]
+    end
+
+    subgraph N5["«serviço externo» Gateway de Pagamento"]
+        A6["«artefato»<br/>API de pagamento"]
+    end
+
+    N1 -- "HTTPS (REST/JSON)" --> N2
+    N2 -- "HTTP (proxy reverso)" --> N3
+    N3 -- "TCP/IP porta 5432 (SQL)" --> N4
+    N3 -- "HTTPS (REST/JSON)" --> N5
+    N5 -. "HTTPS (webhook)" .-> N2
