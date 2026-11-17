@@ -26,9 +26,9 @@ Tema 3 – Plataforma para organizadores de eventos da cidade (shows, festas, fe
 | 9 | Script SQL | [banco/init.sql](banco/init.sql) |
 | 10 | Ambiente Docker | [docker-compose.yml](docker-compose.yml) |
 | 11 | ADRs | [docs/adr/](docs/adr/) |
-| 13 | Diagrama do esquema do banco (bônus) | [diagramas/fontes/DiagramaBanco.md](diagramas/fontes/DiagramaBanco.md) |
+| 12 | Diagrama do esquema do banco (bônus) | [diagramas/fontes/DiagramaBanco.md](diagramas/fontes/DiagramaBanco.md) |
 
-Os diagramas foram feitos em Mermaid: os arquivos-fonte (`.mmd`) ficam em [diagramas/fontes/](diagramas/fontes/) e as imagens exportadas (SVG e PNG) em [diagramas/img/](diagramas/img/).
+Os diagramas foram feitos em Mermaid: os arquivos-fonte (`.mmd`) ficam em [diagramas/fontes/](diagramas/fontes/) e as imagens exportadas (SVG) em [diagramas/img/](diagramas/img/).
 
 ## Como executar o ambiente
 
