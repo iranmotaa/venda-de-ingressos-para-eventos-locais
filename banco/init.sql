@@ -31,7 +31,10 @@ CREATE TABLE pedido (
     valor_total NUMERIC(10,2) NOT NULL CHECK (valor_total >= 0),
     status      VARCHAR(20) NOT NULL DEFAULT 'PENDENTE'
                 CHECK (status IN ('PENDENTE', 'PAGO', 'CANCELADO')),
-    usuario_id  INTEGER NOT NULL REFERENCES usuario (id)                        
+    usuario_id  INTEGER NOT NULL REFERENCES usuario (id),
+    evento_id   INTEGER NOT NULL REFERENCES evento (id),
+    quantidade  INTEGER NOT NULL CHECK (quantidade > 0),
+    expira_em   TIMESTAMP
 );
 
 CREATE TABLE ingresso (

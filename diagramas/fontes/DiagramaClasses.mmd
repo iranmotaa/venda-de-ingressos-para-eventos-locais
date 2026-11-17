@@ -29,8 +29,10 @@ classDiagram
     class Pedido {
         id
         data
+        quantidade
         valorTotal
         status
+        expiraEm
         calcularTotal()
         marcarComoPago()
         cancelar()
@@ -53,13 +55,13 @@ classDiagram
         mensagem
         dataEnvio
     }
-
     Usuario <|-- Organizador
     Usuario "1" --> "0..n" Pedido : realiza
     Usuario "1" --> "0..n" Notificacao : recebe
     Organizador "1" --> "0..n" Evento : organiza
     Notificacao "0..n" --> "1" Evento : sobre
     Evento "0..n" --> "1" Categoria : pertence a
+    Pedido "0..n" --> "1" Evento : reservado em
+    Evento "1" --> "0..n" Ingresso : refere-se a
     Pedido "1" *-- "1..n" Ingresso : contém
     Pedido "1" --> "0..1" Pagamento : pago por
-    Evento "1" --> "0..n" Ingresso : refere-se a
