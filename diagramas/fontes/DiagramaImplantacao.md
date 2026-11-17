@@ -24,7 +24,7 @@
 
 ## Como atende os RNF de infraestrutura
 
-- **RNF-001 (Escalabilidade):** o balanceador distribui o pico de acessos entre as réplicas, e mais réplicas podem ser acrescentadas sem alterar o restante.
-- **RNF-003 (Disponibilidade):** se uma réplica cair, a outra continua atendendo.
+- **RNF-001 (Escalabilidade):** o balanceador distribui o pico de acessos entre as réplicas. A aplicação é stateless, então acrescentar uma réplica exige apenas incluí-la no `docker-compose.yml` e no `upstream` do nginx, sem mudar a aplicação nem o banco.
+- **RNF-003 (Disponibilidade):** se uma réplica cair, a outra continua atendendo, pois o nginx repassa a requisição à réplica seguinte. O `nginx.conf` define `max_fails=1` e `fail_timeout=10s` no `upstream` (com `zone` compartilhada entre os workers) e `proxy_connect_timeout 2s`: a primeira requisição à réplica caída espera até 2 s e é repassada à outra, e a réplica caída fica fora do rodízio por 10 s. Balanceador e banco são instâncias únicas; em produção seriam redundantes (ver ADR-004).
 - **RNF-002 (Segurança):** dados de cartão trafegam só entre o comprador e o Gateway.
 - **RNF-004 (Concorrência):** com várias réplicas, a consistência do estoque é garantida pelo banco (ver ADR-002).

@@ -1,7 +1,5 @@
 # ADR-004 – Contêineres Docker e escalabilidade horizontal
 
-**Status:** Aceita
-
 ## Contexto
 Na abertura das vendas, o número de acessos cresce de repente (RNF-001), e o sistema deve ficar disponível pelo menos 99,9% do ano (RNF-003). Fora desses picos, a demanda é baixa, e um servidor sobredimensionado seria desperdício.
 
@@ -13,5 +11,5 @@ Na abertura das vendas, o número de acessos cresce de repente (RNF-001), e o si
 
 ## Consequências
 - **Positivas:** mais instâncias da aplicação podem ser criadas ou removidas conforme a demanda. Se uma instância cair, as outras continuam atendendo, o que ajuda a manter a disponibilidade. O ambiente é reproduzível em qualquer máquina.
-- **Negativas:** o banco continua sendo ponto único de falha, a menos que se acrescente réplica ou backup. A configuração tem mais componentes para manter.
+- **Negativas:** o banco continua sendo ponto único de falha, a menos que se acrescente réplica ou backup. O balanceador nginx também é uma instância única. A configuração tem mais componentes para manter.
 - **RNF atendidos:** RNF-001 e RNF-003. A consistência com várias réplicas depende da ADR-002.
