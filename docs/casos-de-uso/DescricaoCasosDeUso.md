@@ -1,10 +1,5 @@
 # Descrição textual dos casos de uso principais
 
-Casos descritos: UC-01, UC-05, UC-06 e UC-07.
-**UC-05 (Comprar ingresso)** e **UC-06 (Pagar ingresso)** terão Diagrama de Sequência.
-
----
-
 ## UC-01 – Cadastrar evento
 
 - **Atores:** Organizador
@@ -22,6 +17,62 @@ Casos descritos: UC-01, UC-05, UC-06 e UC-07.
 - **E1 – Dados inválidos ou ausentes (passo 4):** o sistema indica os erros e volta ao passo 3.
 
 **Pós-condições:** evento publicado e disponível para busca e venda.
+
+---
+
+## UC-02 – Editar evento
+
+- **Atores:** Organizador
+- **Pré-condições:** organizador autenticado; evento cadastrado por ele.
+- **RF relacionados:** RF-008
+
+**Fluxo principal**
+1. O organizador seleciona um de seus eventos e escolhe "Editar".
+2. O sistema exibe os dados atuais do evento.
+3. O organizador altera os dados desejados e confirma.
+4. O sistema valida, grava as alterações e exibe a confirmação.
+
+**Fluxos alternativos/exceção**
+- **E1 – Dados inválidos (passo 4):** o sistema indica os erros e volta ao passo 3.
+- **E2 – Quantidade menor que a já vendida (passo 4):** o sistema recusa a alteração e informa quantos ingressos já foram vendidos.
+
+**Pós-condições:** evento atualizado e visível na busca.
+
+---
+
+## UC-03 – Buscar e filtrar eventos
+
+- **Atores:** Comprador
+- **Pré-condições:** nenhuma.
+- **RF relacionados:** RF-006
+
+**Fluxo principal**
+1. O comprador informa um termo de busca e/ou filtros (categoria, data, local, preço).
+2. O sistema consulta os eventos publicados que atendem aos critérios.
+3. O sistema exibe a lista de eventos encontrados.
+4. O comprador escolhe um evento para ver os detalhes e, se quiser, seguir para a compra (UC-05).
+
+**Fluxos alternativos/exceção**
+- **E1 – Nenhum evento encontrado (passo 2):** o sistema informa que não há resultados e sugere ampliar os filtros.
+
+**Pós-condições:** nenhuma alteração de dados.
+
+---
+
+## UC-04 – Consultar disponibilidade
+
+- **Atores:** Comprador (acionado também pelo UC-05, via «include»)
+- **Pré-condições:** evento publicado.
+- **RF relacionados:** RF-005
+
+**Fluxo principal**
+1. O sistema lê a quantidade disponível de ingressos do evento.
+2. O sistema informa a quantidade disponível ao comprador.
+
+**Fluxos alternativos/exceção**
+- **E1 – Ingressos esgotados (passo 1):** o sistema exibe "Esgotado" e a compra não é permitida.
+
+**Pós-condições:** nenhuma alteração de dados.
 
 ---
 
@@ -87,3 +138,41 @@ Casos descritos: UC-01, UC-05, UC-06 e UC-07.
 - **E1 – Ingresso inválido ou já utilizado (passo 2):** o sistema exibe a mensagem correspondente e a entrada não é liberada.
 
 **Pós-condições:** ingresso válido marcado como utilizado.
+
+---
+
+## UC-08 – Acompanhar vendas
+
+- **Atores:** Organizador
+- **Pré-condições:** organizador autenticado; possui ao menos um evento cadastrado.
+- **RF relacionados:** RF-004
+
+**Fluxo principal**
+1. O organizador escolhe "Acompanhar vendas" e seleciona um de seus eventos.
+2. O sistema consolida os pedidos pagos e os ingressos do evento.
+3. O sistema exibe a quantidade vendida, a quantidade disponível e o valor arrecadado.
+
+**Fluxos alternativos/exceção**
+- **E1 – Evento sem vendas (passo 2):** o sistema exibe os totais zerados.
+
+**Pós-condições:** nenhuma alteração de dados.
+
+---
+
+## UC-09 – Notificar participantes
+
+- **Atores:** Sistema (agendador); Comprador como destinatário
+- **Pré-condições:** existem ingressos pagos para um evento que se aproxima.
+- **RF relacionados:** RF-007
+
+**Fluxo principal**
+1. O agendador do sistema dispara a rotina de notificações antes da data do evento.
+2. O sistema identifica os compradores com ingressos pagos para o evento.
+3. O sistema registra uma notificação para cada comprador, com os dados do evento (data, horário e local).
+4. O sistema entrega as notificações aos compradores.
+
+**Fluxos alternativos/exceção**
+- **E1 – Evento alterado ou cancelado (passo 1):** o sistema notifica os compradores sobre a mudança, e não mais sobre o lembrete.
+- **E2 – Falha na entrega (passo 4):** a notificação permanece registrada para nova tentativa.
+
+**Pós-condições:** notificações registradas para os participantes do evento.
